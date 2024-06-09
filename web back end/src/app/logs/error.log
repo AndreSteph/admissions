@@ -1,0 +1,5 @@
+query error: PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in C:\xampp\htdocs\course-subjects\src\controllers\client\submit-grades-controller.php:29
+Stack trace:
+#0 C:\xampp\htdocs\course-subjects\src\controllers\client\submit-grades-controller.php(29): PDO->prepare('SELECT id FROM ...')
+#1 C:\xampp\htdocs\course-subjects\src\controllers\client\submit-grades-controller.php(83): fetchSubjectIds(Object(PDO), Array)
+#2 {main}

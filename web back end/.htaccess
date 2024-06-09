@@ -1,0 +1,39 @@
+# Cors set to allow from specific end point
+Header Set Access-Control-Allow-Origin "*"
+
+# Fix for Apache AUTHORIZATION http header as it is stripped by default for security and should be
+# enabled explicity when needed
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+Options -Indexes
+
+RewriteEngine On    # Turn on the rewriting engine
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Authentication Admin
+
+RewriteRule    ^admin/sessions$                               src/controllers/sessions-controller.php    [L]    # Handle requests
+RewriteRule    ^admin/sessions/([0-9]+)$                               src/controllers/sessions-controller.php?sessionid=$1  [L]    # Handle requests
+
+RewriteRule    ^admin/users$                                          src/controllers/clients-controller.php                 [L]    # Handle admin clients requests
+
+RewriteRule    ^admin/users$                                          src/controllers/clients-controller.php                 [L]    # Handle admin clients requests
+
+RewriteRule    ^admin/subjects$                                          src/controllers/subjects-controller.php                 [L]    # Handle admin subject requests
+RewriteRule    ^admin/subjects/([0-9]+)$                                          src/controllers/subjects-controller.php?subjectid=$1                 [L]    # Handle admin subject requests
+
+
+RewriteRule    ^admin/university$                                          src/controllers/university-controller.php                 [L]    # Handle admin university requests
+RewriteRule    ^admin/university/([0-9]+)$                                          src/controllers/university-controller.php?universityid=$1                 [L]    # Handle admin university requests
+
+RewriteRule    ^admin/courses$                                          src/controllers/courses-controller.php                 [L]    # Handle admin course requests
+RewriteRule    ^admin/courses/([0-9]+)$                                          src/controllers/courses-controller.php?courseid=$1                 [L]    # Handle admin course requests
+
+RewriteRule    ^client/sessions$                               src/controllers/client/sessions-controller.php    [L]    # Handle requests
+RewriteRule    ^client/sessions/([0-9]+)$                               src/controllers/client/sessions-controller.php?sessionid=$1  [L]    # Handle requests
+
+RewriteRule    ^client/register$                               src/controllers/client/client-register-controller.php    [L]    # Handle requests
+RewriteRule    ^client/verify$                               src/controllers/client/client-verify-controller.php    [L]    # Handle requests
+
+RewriteRule    ^client/submitGrades$                               src/controllers/client/submit-grades-controller.php    [L]    # Handle requests

@@ -1,0 +1,14 @@
+{
+    "name": "lenovo/course-subjects",
+    "autoload": {
+        "psr-4": {
+            "Lenovo\\CourseSubjects\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lenovo"
+        }
+    ],
+    "require": {}
+}
